@@ -2,7 +2,9 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth';
 import axios from 'axios';
 
-if (!process.env.NEXTAUTH_SECRET) {
+console.log('NEXTAUTH_SECRET', process.env.NEXT_PUBLIC_NEXTAUTH_SECRET);
+console.log('HASURA_ADMIN_SECRET', process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET);
+if (!process.env.NEXT_PUBLIC_NEXTAUTH_SECRET) {
   throw new Error(
     'please provide process.env.NEXTAUTH_SECRET environment variable'
   );
@@ -15,7 +17,7 @@ const graphqlQuery = {
 const endpoint = 'https://test-db-9f18.aks-japan.settlemint.com/v1/graphql';
 
 const headers = {
-  'x-hasura-admin-secret': `${process.env.HASURA_ADMIN_SECRET}`,
+  'x-hasura-admin-secret': `${process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET}`,
   'x-auth-token': `${process.env.NEXT_PUBLIC_API_KEY}`,
   'content-type': 'application/json',
 };
