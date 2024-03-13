@@ -2,9 +2,9 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth';
 import axios from 'axios';
 
-console.log('NEXTAUTH_SECRET', process.env.NEXT_PUBLIC_NEXTAUTH_SECRET);
+console.log('NEXTAUTH_SECRET', process.env.NEXTAUTH_SECRET);
 console.log('HASURA_ADMIN_SECRET', process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET);
-if (!process.env.NEXT_PUBLIC_NEXTAUTH_SECRET) {
+if (!process.env.NEXTAUTH_SECRET) {
   throw new Error(
     'please provide process.env.NEXTAUTH_SECRET environment variable'
   );
