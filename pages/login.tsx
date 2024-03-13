@@ -95,7 +95,7 @@ const Page = () => {
               </div>
             </div>
             <div className="banner">
-              <img id="bike" src="pngegg.png" alt="bike" />
+              <img id="hand" width="600" src="phandall.png" alt="hand" />
             </div>
           </div>
         </form>
