@@ -51,7 +51,7 @@ function CustomApp({
   return (
     <>
       <Head>
-        <title>Welcome to khi-frontend!</title>
+        <title>Welcome to frontend!</title>
       </Head>
 
       <div className="app">
