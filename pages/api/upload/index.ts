@@ -12,6 +12,7 @@ async function uploadImageToBlobStorage(
   blobName: string,
   localFilePath: Uint8Array
 ) {
+  console.log('uploadImageToBlobStorage', blobName, localFilePath.length);
   const connectionString =
     "DefaultEndpointsProtocol=https;AccountName=kawasakisettlemint;AccountKey=" + process.env.NEXT_PUBLIC_AZ_SECRET + ";EndpointSuffix=core.windows.net";
   const containerName = 'containerkhi';
