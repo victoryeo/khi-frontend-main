@@ -16,6 +16,8 @@ export default createProxyMiddleware({
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const cookies = getCookies({ req });
+    console.log("req", req.url, req.method, cookies["x-hasura-user-id"], cookies["x-hasura-role"]);
+    console.log(process.env.HASURA_ADMIN_SECRET, process.env.NEXT_PUBLIC_API_KEY),
     proxyReq.setHeader(
       "x-hasura-user-id",
       cookies["x-hasura-user-id"] ?? "anonymous"
