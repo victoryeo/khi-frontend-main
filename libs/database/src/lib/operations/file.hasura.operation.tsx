@@ -1,8 +1,8 @@
-import type * as Types from '../graphql.hasura.types';
+import type * as Types from '../../graphql.hasura.types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions = {"context":{"clientName":"hasura"}} as const;
+const defaultOptions = { context: { clientName: 'hasura' } } as const;
 export type InsertFilesMutationVariables = Types.Exact<{
   cid: Types.InputMaybe<Types.Scalars['String']['input']>;
   counterID: Types.InputMaybe<Types.Scalars['String']['input']>;
@@ -11,85 +11,173 @@ export type InsertFilesMutationVariables = Types.Exact<{
   file_hash?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
+export type InsertFilesMutation = {
+  __typename: 'mutation_root';
+  insert_Files: {
+    __typename: 'Files_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
-export type InsertFilesMutation = { __typename: 'mutation_root', insert_Files: { __typename: 'Files_mutation_response', affected_rows: number } | null };
+export type GetFilesQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-export type GetFilesQueryVariables = Types.Exact<{ [key: string]: never; }>;
-
-
-export type GetFilesQuery = { __typename: 'query_root', Files: Array<{ __typename: 'Files', cid: string, counterID: string, tx_hash: string, created_at: string | null, file_size: string | null, id: string, backup_file_cid: string | null, is_match: boolean, updated_at: string, is_verificationFailed: boolean }> };
+export type GetFilesQuery = {
+  __typename: 'query_root';
+  Files: Array<{
+    __typename: 'Files';
+    cid: string;
+    counterID: string;
+    tx_hash: string;
+    created_at: string | null;
+    file_size: string | null;
+    id: string;
+    backup_file_cid: string | null;
+    is_match: boolean;
+    updated_at: string;
+    is_verificationFailed: boolean;
+  }>;
+};
 
 export type GetFilesByCidQueryVariables = Types.Exact<{
   _eq: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
-
-export type GetFilesByCidQuery = { __typename: 'query_root', Files: Array<{ __typename: 'Files', cid: string, counterID: string, tx_hash: string, created_at: string | null, file_size: string | null, id: string, backup_file_cid: string | null, is_match: boolean, updated_at: string, is_verificationFailed: boolean }> };
+export type GetFilesByCidQuery = {
+  __typename: 'query_root';
+  Files: Array<{
+    __typename: 'Files';
+    cid: string;
+    counterID: string;
+    tx_hash: string;
+    created_at: string | null;
+    file_size: string | null;
+    id: string;
+    backup_file_cid: string | null;
+    is_match: boolean;
+    updated_at: string;
+    is_verificationFailed: boolean;
+  }>;
+};
 
 export type IsDataPresentQueryVariables = Types.Exact<{
   cid?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
-
-export type IsDataPresentQuery = { __typename: 'query_root', Files_aggregate: { __typename: 'Files_aggregate', aggregate: { __typename: 'Files_aggregate_fields', count: number } | null } };
+export type IsDataPresentQuery = {
+  __typename: 'query_root';
+  Files_aggregate: {
+    __typename: 'Files_aggregate';
+    aggregate: { __typename: 'Files_aggregate_fields'; count: number } | null;
+  };
+};
 
 export type VerifyFileByHashMutationVariables = Types.Exact<{
   backup_file_cid?: Types.InputMaybe<Types.Scalars['String']['input']>;
   tx_hash?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
-
-export type VerifyFileByHashMutation = { __typename: 'mutation_root', update_Files: { __typename: 'Files_mutation_response', affected_rows: number } | null };
+export type VerifyFileByHashMutation = {
+  __typename: 'mutation_root';
+  update_Files: {
+    __typename: 'Files_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export type VerifyFileByIdMutationVariables = Types.Exact<{
   backup_file_cid?: Types.InputMaybe<Types.Scalars['String']['input']>;
   id?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
-
-export type VerifyFileByIdMutation = { __typename: 'mutation_root', update_Files: { __typename: 'Files_mutation_response', affected_rows: number } | null };
+export type VerifyFileByIdMutation = {
+  __typename: 'mutation_root';
+  update_Files: {
+    __typename: 'Files_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export type GetFileByByTxHashQueryVariables = Types.Exact<{
   tx_hash?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
-
-export type GetFileByByTxHashQuery = { __typename: 'query_root', Files: Array<{ __typename: 'Files', counterID: string, tx_hash: string, id: string, file_hash: string }> };
+export type GetFileByByTxHashQuery = {
+  __typename: 'query_root';
+  Files: Array<{
+    __typename: 'Files';
+    counterID: string;
+    tx_hash: string;
+    id: string;
+    file_hash: string;
+  }>;
+};
 
 export type GetFileByByTxIdQueryVariables = Types.Exact<{
   tx_id?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
-
-export type GetFileByByTxIdQuery = { __typename: 'query_root', Files: Array<{ __typename: 'Files', counterID: string, tx_hash: string, id: string, file_hash: string }> };
+export type GetFileByByTxIdQuery = {
+  __typename: 'query_root';
+  Files: Array<{
+    __typename: 'Files';
+    counterID: string;
+    tx_hash: string;
+    id: string;
+    file_hash: string;
+  }>;
+};
 
 export type UpdateIsVerifyFailedByTxHashMutationVariables = Types.Exact<{
   is_verificationFailed: Types.InputMaybe<Types.Scalars['Boolean']['input']>;
   tx_hash?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
-
-export type UpdateIsVerifyFailedByTxHashMutation = { __typename: 'mutation_root', update_Files: { __typename: 'Files_mutation_response', affected_rows: number } | null };
+export type UpdateIsVerifyFailedByTxHashMutation = {
+  __typename: 'mutation_root';
+  update_Files: {
+    __typename: 'Files_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export type UpdateIsVerifyFailedByIdMutationVariables = Types.Exact<{
   is_verificationFailed: Types.InputMaybe<Types.Scalars['Boolean']['input']>;
   id?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
-
-export type UpdateIsVerifyFailedByIdMutation = { __typename: 'mutation_root', update_Files: { __typename: 'Files_mutation_response', affected_rows: number } | null };
-
+export type UpdateIsVerifyFailedByIdMutation = {
+  __typename: 'mutation_root';
+  update_Files: {
+    __typename: 'Files_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export const InsertFilesDocument = /*#__PURE__*/ gql`
-    mutation insertFiles($cid: String, $counterID: String, $tx_hash: String, $file_size: String = "", $file_hash: String = "") {
-  insert_Files(
-    objects: {cid: $cid, counterID: $counterID, tx_hash: $tx_hash, file_size: $file_size, file_hash: $file_hash}
+  mutation insertFiles(
+    $cid: String
+    $counterID: String
+    $tx_hash: String
+    $file_size: String = ""
+    $file_hash: String = ""
   ) {
-    affected_rows
+    insert_Files(
+      objects: {
+        cid: $cid
+        counterID: $counterID
+        tx_hash: $tx_hash
+        file_size: $file_size
+        file_hash: $file_hash
+      }
+    ) {
+      affected_rows
+    }
   }
-}
-    `;
-export type InsertFilesMutationFn = Apollo.MutationFunction<InsertFilesMutation, InsertFilesMutationVariables>;
+`;
+export type InsertFilesMutationFn = Apollo.MutationFunction<
+  InsertFilesMutation,
+  InsertFilesMutationVariables
+>;
 
 /**
  * __useInsertFilesMutation__
@@ -112,29 +200,43 @@ export type InsertFilesMutationFn = Apollo.MutationFunction<InsertFilesMutation,
  *   },
  * });
  */
-export function useInsertFilesMutation(baseOptions?: Apollo.MutationHookOptions<InsertFilesMutation, InsertFilesMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<InsertFilesMutation, InsertFilesMutationVariables>(InsertFilesDocument, options);
-      }
-export type InsertFilesMutationHookResult = ReturnType<typeof useInsertFilesMutation>;
-export type InsertFilesMutationResult = Apollo.MutationResult<InsertFilesMutation>;
-export type InsertFilesMutationOptions = Apollo.BaseMutationOptions<InsertFilesMutation, InsertFilesMutationVariables>;
-export const GetFilesDocument = /*#__PURE__*/ gql`
-    query getFiles {
-  Files(order_by: {created_at: desc}) {
-    cid
-    counterID
-    tx_hash
-    created_at
-    file_size
-    id
-    backup_file_cid
-    is_match
-    updated_at
-    is_verificationFailed
-  }
+export function useInsertFilesMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InsertFilesMutation,
+    InsertFilesMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<InsertFilesMutation, InsertFilesMutationVariables>(
+    InsertFilesDocument,
+    options
+  );
 }
-    `;
+export type InsertFilesMutationHookResult = ReturnType<
+  typeof useInsertFilesMutation
+>;
+export type InsertFilesMutationResult =
+  Apollo.MutationResult<InsertFilesMutation>;
+export type InsertFilesMutationOptions = Apollo.BaseMutationOptions<
+  InsertFilesMutation,
+  InsertFilesMutationVariables
+>;
+export const GetFilesDocument = /*#__PURE__*/ gql`
+  query getFiles {
+    Files(order_by: { created_at: desc }) {
+      cid
+      counterID
+      tx_hash
+      created_at
+      file_size
+      id
+      backup_file_cid
+      is_match
+      updated_at
+      is_verificationFailed
+    }
+  }
+`;
 
 /**
  * __useGetFilesQuery__
@@ -151,36 +253,54 @@ export const GetFilesDocument = /*#__PURE__*/ gql`
  *   },
  * });
  */
-export function useGetFilesQuery(baseOptions?: Apollo.QueryHookOptions<GetFilesQuery, GetFilesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetFilesQuery, GetFilesQueryVariables>(GetFilesDocument, options);
-      }
-export function useGetFilesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFilesQuery, GetFilesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetFilesQuery, GetFilesQueryVariables>(GetFilesDocument, options);
-        }
-export type GetFilesQueryHookResult = ReturnType<typeof useGetFilesQuery>;
-export type GetFilesLazyQueryHookResult = ReturnType<typeof useGetFilesLazyQuery>;
-export type GetFilesQueryResult = Apollo.QueryResult<GetFilesQuery, GetFilesQueryVariables>;
-export function refetchGetFilesQuery(variables?: GetFilesQueryVariables) {
-      return { query: GetFilesDocument, variables: variables }
-    }
-export const GetFilesByCidDocument = /*#__PURE__*/ gql`
-    query getFilesByCid($_eq: String) {
-  Files(where: {cid: {_eq: $_eq}}) {
-    cid
-    counterID
-    tx_hash
-    created_at
-    file_size
-    id
-    backup_file_cid
-    is_match
-    updated_at
-    is_verificationFailed
-  }
+export function useGetFilesQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetFilesQuery, GetFilesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetFilesQuery, GetFilesQueryVariables>(
+    GetFilesDocument,
+    options
+  );
 }
-    `;
+export function useGetFilesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetFilesQuery,
+    GetFilesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetFilesQuery, GetFilesQueryVariables>(
+    GetFilesDocument,
+    options
+  );
+}
+export type GetFilesQueryHookResult = ReturnType<typeof useGetFilesQuery>;
+export type GetFilesLazyQueryHookResult = ReturnType<
+  typeof useGetFilesLazyQuery
+>;
+export type GetFilesQueryResult = Apollo.QueryResult<
+  GetFilesQuery,
+  GetFilesQueryVariables
+>;
+export function refetchGetFilesQuery(variables?: GetFilesQueryVariables) {
+  return { query: GetFilesDocument, variables: variables };
+}
+export const GetFilesByCidDocument = /*#__PURE__*/ gql`
+  query getFilesByCid($_eq: String) {
+    Files(where: { cid: { _eq: $_eq } }) {
+      cid
+      counterID
+      tx_hash
+      created_at
+      file_size
+      id
+      backup_file_cid
+      is_match
+      updated_at
+      is_verificationFailed
+    }
+  }
+`;
 
 /**
  * __useGetFilesByCidQuery__
@@ -198,29 +318,54 @@ export const GetFilesByCidDocument = /*#__PURE__*/ gql`
  *   },
  * });
  */
-export function useGetFilesByCidQuery(baseOptions?: Apollo.QueryHookOptions<GetFilesByCidQuery, GetFilesByCidQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetFilesByCidQuery, GetFilesByCidQueryVariables>(GetFilesByCidDocument, options);
-      }
-export function useGetFilesByCidLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFilesByCidQuery, GetFilesByCidQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetFilesByCidQuery, GetFilesByCidQueryVariables>(GetFilesByCidDocument, options);
-        }
-export type GetFilesByCidQueryHookResult = ReturnType<typeof useGetFilesByCidQuery>;
-export type GetFilesByCidLazyQueryHookResult = ReturnType<typeof useGetFilesByCidLazyQuery>;
-export type GetFilesByCidQueryResult = Apollo.QueryResult<GetFilesByCidQuery, GetFilesByCidQueryVariables>;
-export function refetchGetFilesByCidQuery(variables?: GetFilesByCidQueryVariables) {
-      return { query: GetFilesByCidDocument, variables: variables }
-    }
+export function useGetFilesByCidQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetFilesByCidQuery,
+    GetFilesByCidQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetFilesByCidQuery, GetFilesByCidQueryVariables>(
+    GetFilesByCidDocument,
+    options
+  );
+}
+export function useGetFilesByCidLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetFilesByCidQuery,
+    GetFilesByCidQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetFilesByCidQuery, GetFilesByCidQueryVariables>(
+    GetFilesByCidDocument,
+    options
+  );
+}
+export type GetFilesByCidQueryHookResult = ReturnType<
+  typeof useGetFilesByCidQuery
+>;
+export type GetFilesByCidLazyQueryHookResult = ReturnType<
+  typeof useGetFilesByCidLazyQuery
+>;
+export type GetFilesByCidQueryResult = Apollo.QueryResult<
+  GetFilesByCidQuery,
+  GetFilesByCidQueryVariables
+>;
+export function refetchGetFilesByCidQuery(
+  variables?: GetFilesByCidQueryVariables
+) {
+  return { query: GetFilesByCidDocument, variables: variables };
+}
 export const IsDataPresentDocument = /*#__PURE__*/ gql`
-    query isDataPresent($cid: String = "") {
-  Files_aggregate(where: {cid: {_eq: $cid}}) {
-    aggregate {
-      count
+  query isDataPresent($cid: String = "") {
+    Files_aggregate(where: { cid: { _eq: $cid } }) {
+      aggregate {
+        count
+      }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useIsDataPresentQuery__
@@ -238,31 +383,62 @@ export const IsDataPresentDocument = /*#__PURE__*/ gql`
  *   },
  * });
  */
-export function useIsDataPresentQuery(baseOptions?: Apollo.QueryHookOptions<IsDataPresentQuery, IsDataPresentQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<IsDataPresentQuery, IsDataPresentQueryVariables>(IsDataPresentDocument, options);
-      }
-export function useIsDataPresentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IsDataPresentQuery, IsDataPresentQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<IsDataPresentQuery, IsDataPresentQueryVariables>(IsDataPresentDocument, options);
-        }
-export type IsDataPresentQueryHookResult = ReturnType<typeof useIsDataPresentQuery>;
-export type IsDataPresentLazyQueryHookResult = ReturnType<typeof useIsDataPresentLazyQuery>;
-export type IsDataPresentQueryResult = Apollo.QueryResult<IsDataPresentQuery, IsDataPresentQueryVariables>;
-export function refetchIsDataPresentQuery(variables?: IsDataPresentQueryVariables) {
-      return { query: IsDataPresentDocument, variables: variables }
-    }
-export const VerifyFileByHashDocument = /*#__PURE__*/ gql`
-    mutation verifyFileByHash($backup_file_cid: String = "", $tx_hash: String = "") {
-  update_Files(
-    where: {tx_hash: {_eq: $tx_hash}}
-    _set: {is_match: true, backup_file_cid: $backup_file_cid}
-  ) {
-    affected_rows
-  }
+export function useIsDataPresentQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    IsDataPresentQuery,
+    IsDataPresentQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<IsDataPresentQuery, IsDataPresentQueryVariables>(
+    IsDataPresentDocument,
+    options
+  );
 }
-    `;
-export type VerifyFileByHashMutationFn = Apollo.MutationFunction<VerifyFileByHashMutation, VerifyFileByHashMutationVariables>;
+export function useIsDataPresentLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    IsDataPresentQuery,
+    IsDataPresentQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<IsDataPresentQuery, IsDataPresentQueryVariables>(
+    IsDataPresentDocument,
+    options
+  );
+}
+export type IsDataPresentQueryHookResult = ReturnType<
+  typeof useIsDataPresentQuery
+>;
+export type IsDataPresentLazyQueryHookResult = ReturnType<
+  typeof useIsDataPresentLazyQuery
+>;
+export type IsDataPresentQueryResult = Apollo.QueryResult<
+  IsDataPresentQuery,
+  IsDataPresentQueryVariables
+>;
+export function refetchIsDataPresentQuery(
+  variables?: IsDataPresentQueryVariables
+) {
+  return { query: IsDataPresentDocument, variables: variables };
+}
+export const VerifyFileByHashDocument = /*#__PURE__*/ gql`
+  mutation verifyFileByHash(
+    $backup_file_cid: String = ""
+    $tx_hash: String = ""
+  ) {
+    update_Files(
+      where: { tx_hash: { _eq: $tx_hash } }
+      _set: { is_match: true, backup_file_cid: $backup_file_cid }
+    ) {
+      affected_rows
+    }
+  }
+`;
+export type VerifyFileByHashMutationFn = Apollo.MutationFunction<
+  VerifyFileByHashMutation,
+  VerifyFileByHashMutationVariables
+>;
 
 /**
  * __useVerifyFileByHashMutation__
@@ -282,24 +458,41 @@ export type VerifyFileByHashMutationFn = Apollo.MutationFunction<VerifyFileByHas
  *   },
  * });
  */
-export function useVerifyFileByHashMutation(baseOptions?: Apollo.MutationHookOptions<VerifyFileByHashMutation, VerifyFileByHashMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<VerifyFileByHashMutation, VerifyFileByHashMutationVariables>(VerifyFileByHashDocument, options);
-      }
-export type VerifyFileByHashMutationHookResult = ReturnType<typeof useVerifyFileByHashMutation>;
-export type VerifyFileByHashMutationResult = Apollo.MutationResult<VerifyFileByHashMutation>;
-export type VerifyFileByHashMutationOptions = Apollo.BaseMutationOptions<VerifyFileByHashMutation, VerifyFileByHashMutationVariables>;
-export const VerifyFileByIdDocument = /*#__PURE__*/ gql`
-    mutation verifyFileById($backup_file_cid: String = "", $id: String = "") {
-  update_Files(
-    where: {counterID: {_eq: $id}}
-    _set: {is_match: true, backup_file_cid: $backup_file_cid}
-  ) {
-    affected_rows
-  }
+export function useVerifyFileByHashMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    VerifyFileByHashMutation,
+    VerifyFileByHashMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    VerifyFileByHashMutation,
+    VerifyFileByHashMutationVariables
+  >(VerifyFileByHashDocument, options);
 }
-    `;
-export type VerifyFileByIdMutationFn = Apollo.MutationFunction<VerifyFileByIdMutation, VerifyFileByIdMutationVariables>;
+export type VerifyFileByHashMutationHookResult = ReturnType<
+  typeof useVerifyFileByHashMutation
+>;
+export type VerifyFileByHashMutationResult =
+  Apollo.MutationResult<VerifyFileByHashMutation>;
+export type VerifyFileByHashMutationOptions = Apollo.BaseMutationOptions<
+  VerifyFileByHashMutation,
+  VerifyFileByHashMutationVariables
+>;
+export const VerifyFileByIdDocument = /*#__PURE__*/ gql`
+  mutation verifyFileById($backup_file_cid: String = "", $id: String = "") {
+    update_Files(
+      where: { counterID: { _eq: $id } }
+      _set: { is_match: true, backup_file_cid: $backup_file_cid }
+    ) {
+      affected_rows
+    }
+  }
+`;
+export type VerifyFileByIdMutationFn = Apollo.MutationFunction<
+  VerifyFileByIdMutation,
+  VerifyFileByIdMutationVariables
+>;
 
 /**
  * __useVerifyFileByIdMutation__
@@ -319,23 +512,37 @@ export type VerifyFileByIdMutationFn = Apollo.MutationFunction<VerifyFileByIdMut
  *   },
  * });
  */
-export function useVerifyFileByIdMutation(baseOptions?: Apollo.MutationHookOptions<VerifyFileByIdMutation, VerifyFileByIdMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<VerifyFileByIdMutation, VerifyFileByIdMutationVariables>(VerifyFileByIdDocument, options);
-      }
-export type VerifyFileByIdMutationHookResult = ReturnType<typeof useVerifyFileByIdMutation>;
-export type VerifyFileByIdMutationResult = Apollo.MutationResult<VerifyFileByIdMutation>;
-export type VerifyFileByIdMutationOptions = Apollo.BaseMutationOptions<VerifyFileByIdMutation, VerifyFileByIdMutationVariables>;
-export const GetFileByByTxHashDocument = /*#__PURE__*/ gql`
-    query getFileByByTxHash($tx_hash: String = "") {
-  Files(where: {tx_hash: {_eq: $tx_hash}}) {
-    counterID
-    tx_hash
-    id
-    file_hash
-  }
+export function useVerifyFileByIdMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    VerifyFileByIdMutation,
+    VerifyFileByIdMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    VerifyFileByIdMutation,
+    VerifyFileByIdMutationVariables
+  >(VerifyFileByIdDocument, options);
 }
-    `;
+export type VerifyFileByIdMutationHookResult = ReturnType<
+  typeof useVerifyFileByIdMutation
+>;
+export type VerifyFileByIdMutationResult =
+  Apollo.MutationResult<VerifyFileByIdMutation>;
+export type VerifyFileByIdMutationOptions = Apollo.BaseMutationOptions<
+  VerifyFileByIdMutation,
+  VerifyFileByIdMutationVariables
+>;
+export const GetFileByByTxHashDocument = /*#__PURE__*/ gql`
+  query getFileByByTxHash($tx_hash: String = "") {
+    Files(where: { tx_hash: { _eq: $tx_hash } }) {
+      counterID
+      tx_hash
+      id
+      file_hash
+    }
+  }
+`;
 
 /**
  * __useGetFileByByTxHashQuery__
@@ -353,30 +560,55 @@ export const GetFileByByTxHashDocument = /*#__PURE__*/ gql`
  *   },
  * });
  */
-export function useGetFileByByTxHashQuery(baseOptions?: Apollo.QueryHookOptions<GetFileByByTxHashQuery, GetFileByByTxHashQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetFileByByTxHashQuery, GetFileByByTxHashQueryVariables>(GetFileByByTxHashDocument, options);
-      }
-export function useGetFileByByTxHashLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFileByByTxHashQuery, GetFileByByTxHashQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetFileByByTxHashQuery, GetFileByByTxHashQueryVariables>(GetFileByByTxHashDocument, options);
-        }
-export type GetFileByByTxHashQueryHookResult = ReturnType<typeof useGetFileByByTxHashQuery>;
-export type GetFileByByTxHashLazyQueryHookResult = ReturnType<typeof useGetFileByByTxHashLazyQuery>;
-export type GetFileByByTxHashQueryResult = Apollo.QueryResult<GetFileByByTxHashQuery, GetFileByByTxHashQueryVariables>;
-export function refetchGetFileByByTxHashQuery(variables?: GetFileByByTxHashQueryVariables) {
-      return { query: GetFileByByTxHashDocument, variables: variables }
-    }
-export const GetFileByByTxIdDocument = /*#__PURE__*/ gql`
-    query getFileByByTxId($tx_id: String = "") {
-  Files(where: {counterID: {_eq: $tx_id}}) {
-    counterID
-    tx_hash
-    id
-    file_hash
-  }
+export function useGetFileByByTxHashQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetFileByByTxHashQuery,
+    GetFileByByTxHashQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetFileByByTxHashQuery,
+    GetFileByByTxHashQueryVariables
+  >(GetFileByByTxHashDocument, options);
 }
-    `;
+export function useGetFileByByTxHashLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetFileByByTxHashQuery,
+    GetFileByByTxHashQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetFileByByTxHashQuery,
+    GetFileByByTxHashQueryVariables
+  >(GetFileByByTxHashDocument, options);
+}
+export type GetFileByByTxHashQueryHookResult = ReturnType<
+  typeof useGetFileByByTxHashQuery
+>;
+export type GetFileByByTxHashLazyQueryHookResult = ReturnType<
+  typeof useGetFileByByTxHashLazyQuery
+>;
+export type GetFileByByTxHashQueryResult = Apollo.QueryResult<
+  GetFileByByTxHashQuery,
+  GetFileByByTxHashQueryVariables
+>;
+export function refetchGetFileByByTxHashQuery(
+  variables?: GetFileByByTxHashQueryVariables
+) {
+  return { query: GetFileByByTxHashDocument, variables: variables };
+}
+export const GetFileByByTxIdDocument = /*#__PURE__*/ gql`
+  query getFileByByTxId($tx_id: String = "") {
+    Files(where: { counterID: { _eq: $tx_id } }) {
+      counterID
+      tx_hash
+      id
+      file_hash
+    }
+  }
+`;
 
 /**
  * __useGetFileByByTxIdQuery__
@@ -394,31 +626,62 @@ export const GetFileByByTxIdDocument = /*#__PURE__*/ gql`
  *   },
  * });
  */
-export function useGetFileByByTxIdQuery(baseOptions?: Apollo.QueryHookOptions<GetFileByByTxIdQuery, GetFileByByTxIdQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetFileByByTxIdQuery, GetFileByByTxIdQueryVariables>(GetFileByByTxIdDocument, options);
-      }
-export function useGetFileByByTxIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFileByByTxIdQuery, GetFileByByTxIdQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetFileByByTxIdQuery, GetFileByByTxIdQueryVariables>(GetFileByByTxIdDocument, options);
-        }
-export type GetFileByByTxIdQueryHookResult = ReturnType<typeof useGetFileByByTxIdQuery>;
-export type GetFileByByTxIdLazyQueryHookResult = ReturnType<typeof useGetFileByByTxIdLazyQuery>;
-export type GetFileByByTxIdQueryResult = Apollo.QueryResult<GetFileByByTxIdQuery, GetFileByByTxIdQueryVariables>;
-export function refetchGetFileByByTxIdQuery(variables?: GetFileByByTxIdQueryVariables) {
-      return { query: GetFileByByTxIdDocument, variables: variables }
-    }
-export const UpdateIsVerifyFailedByTxHashDocument = /*#__PURE__*/ gql`
-    mutation updateIsVerifyFailedByTxHash($is_verificationFailed: Boolean, $tx_hash: String = "") {
-  update_Files(
-    where: {tx_hash: {_eq: $tx_hash}}
-    _set: {is_verificationFailed: $is_verificationFailed}
-  ) {
-    affected_rows
-  }
+export function useGetFileByByTxIdQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetFileByByTxIdQuery,
+    GetFileByByTxIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetFileByByTxIdQuery, GetFileByByTxIdQueryVariables>(
+    GetFileByByTxIdDocument,
+    options
+  );
 }
-    `;
-export type UpdateIsVerifyFailedByTxHashMutationFn = Apollo.MutationFunction<UpdateIsVerifyFailedByTxHashMutation, UpdateIsVerifyFailedByTxHashMutationVariables>;
+export function useGetFileByByTxIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetFileByByTxIdQuery,
+    GetFileByByTxIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetFileByByTxIdQuery,
+    GetFileByByTxIdQueryVariables
+  >(GetFileByByTxIdDocument, options);
+}
+export type GetFileByByTxIdQueryHookResult = ReturnType<
+  typeof useGetFileByByTxIdQuery
+>;
+export type GetFileByByTxIdLazyQueryHookResult = ReturnType<
+  typeof useGetFileByByTxIdLazyQuery
+>;
+export type GetFileByByTxIdQueryResult = Apollo.QueryResult<
+  GetFileByByTxIdQuery,
+  GetFileByByTxIdQueryVariables
+>;
+export function refetchGetFileByByTxIdQuery(
+  variables?: GetFileByByTxIdQueryVariables
+) {
+  return { query: GetFileByByTxIdDocument, variables: variables };
+}
+export const UpdateIsVerifyFailedByTxHashDocument = /*#__PURE__*/ gql`
+  mutation updateIsVerifyFailedByTxHash(
+    $is_verificationFailed: Boolean
+    $tx_hash: String = ""
+  ) {
+    update_Files(
+      where: { tx_hash: { _eq: $tx_hash } }
+      _set: { is_verificationFailed: $is_verificationFailed }
+    ) {
+      affected_rows
+    }
+  }
+`;
+export type UpdateIsVerifyFailedByTxHashMutationFn = Apollo.MutationFunction<
+  UpdateIsVerifyFailedByTxHashMutation,
+  UpdateIsVerifyFailedByTxHashMutationVariables
+>;
 
 /**
  * __useUpdateIsVerifyFailedByTxHashMutation__
@@ -438,24 +701,45 @@ export type UpdateIsVerifyFailedByTxHashMutationFn = Apollo.MutationFunction<Upd
  *   },
  * });
  */
-export function useUpdateIsVerifyFailedByTxHashMutation(baseOptions?: Apollo.MutationHookOptions<UpdateIsVerifyFailedByTxHashMutation, UpdateIsVerifyFailedByTxHashMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateIsVerifyFailedByTxHashMutation, UpdateIsVerifyFailedByTxHashMutationVariables>(UpdateIsVerifyFailedByTxHashDocument, options);
-      }
-export type UpdateIsVerifyFailedByTxHashMutationHookResult = ReturnType<typeof useUpdateIsVerifyFailedByTxHashMutation>;
-export type UpdateIsVerifyFailedByTxHashMutationResult = Apollo.MutationResult<UpdateIsVerifyFailedByTxHashMutation>;
-export type UpdateIsVerifyFailedByTxHashMutationOptions = Apollo.BaseMutationOptions<UpdateIsVerifyFailedByTxHashMutation, UpdateIsVerifyFailedByTxHashMutationVariables>;
-export const UpdateIsVerifyFailedByIdDocument = /*#__PURE__*/ gql`
-    mutation updateIsVerifyFailedById($is_verificationFailed: Boolean, $id: String = "") {
-  update_Files(
-    where: {counterID: {_eq: $id}}
-    _set: {is_verificationFailed: $is_verificationFailed}
-  ) {
-    affected_rows
-  }
+export function useUpdateIsVerifyFailedByTxHashMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateIsVerifyFailedByTxHashMutation,
+    UpdateIsVerifyFailedByTxHashMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateIsVerifyFailedByTxHashMutation,
+    UpdateIsVerifyFailedByTxHashMutationVariables
+  >(UpdateIsVerifyFailedByTxHashDocument, options);
 }
-    `;
-export type UpdateIsVerifyFailedByIdMutationFn = Apollo.MutationFunction<UpdateIsVerifyFailedByIdMutation, UpdateIsVerifyFailedByIdMutationVariables>;
+export type UpdateIsVerifyFailedByTxHashMutationHookResult = ReturnType<
+  typeof useUpdateIsVerifyFailedByTxHashMutation
+>;
+export type UpdateIsVerifyFailedByTxHashMutationResult =
+  Apollo.MutationResult<UpdateIsVerifyFailedByTxHashMutation>;
+export type UpdateIsVerifyFailedByTxHashMutationOptions =
+  Apollo.BaseMutationOptions<
+    UpdateIsVerifyFailedByTxHashMutation,
+    UpdateIsVerifyFailedByTxHashMutationVariables
+  >;
+export const UpdateIsVerifyFailedByIdDocument = /*#__PURE__*/ gql`
+  mutation updateIsVerifyFailedById(
+    $is_verificationFailed: Boolean
+    $id: String = ""
+  ) {
+    update_Files(
+      where: { counterID: { _eq: $id } }
+      _set: { is_verificationFailed: $is_verificationFailed }
+    ) {
+      affected_rows
+    }
+  }
+`;
+export type UpdateIsVerifyFailedByIdMutationFn = Apollo.MutationFunction<
+  UpdateIsVerifyFailedByIdMutation,
+  UpdateIsVerifyFailedByIdMutationVariables
+>;
 
 /**
  * __useUpdateIsVerifyFailedByIdMutation__
@@ -475,10 +759,25 @@ export type UpdateIsVerifyFailedByIdMutationFn = Apollo.MutationFunction<UpdateI
  *   },
  * });
  */
-export function useUpdateIsVerifyFailedByIdMutation(baseOptions?: Apollo.MutationHookOptions<UpdateIsVerifyFailedByIdMutation, UpdateIsVerifyFailedByIdMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateIsVerifyFailedByIdMutation, UpdateIsVerifyFailedByIdMutationVariables>(UpdateIsVerifyFailedByIdDocument, options);
-      }
-export type UpdateIsVerifyFailedByIdMutationHookResult = ReturnType<typeof useUpdateIsVerifyFailedByIdMutation>;
-export type UpdateIsVerifyFailedByIdMutationResult = Apollo.MutationResult<UpdateIsVerifyFailedByIdMutation>;
-export type UpdateIsVerifyFailedByIdMutationOptions = Apollo.BaseMutationOptions<UpdateIsVerifyFailedByIdMutation, UpdateIsVerifyFailedByIdMutationVariables>;
+export function useUpdateIsVerifyFailedByIdMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateIsVerifyFailedByIdMutation,
+    UpdateIsVerifyFailedByIdMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateIsVerifyFailedByIdMutation,
+    UpdateIsVerifyFailedByIdMutationVariables
+  >(UpdateIsVerifyFailedByIdDocument, options);
+}
+export type UpdateIsVerifyFailedByIdMutationHookResult = ReturnType<
+  typeof useUpdateIsVerifyFailedByIdMutation
+>;
+export type UpdateIsVerifyFailedByIdMutationResult =
+  Apollo.MutationResult<UpdateIsVerifyFailedByIdMutation>;
+export type UpdateIsVerifyFailedByIdMutationOptions =
+  Apollo.BaseMutationOptions<
+    UpdateIsVerifyFailedByIdMutation,
+    UpdateIsVerifyFailedByIdMutationVariables
+  >;

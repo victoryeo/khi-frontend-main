@@ -34,7 +34,6 @@ function createCache() {
  * Configure an ApolloClient instance for Server Side Rendering (SSR) or for browser Client Side Rendering (CSR)
  */
 function createApolloClient(cache?: ApolloCache<NormalizedCacheObject>) {
-  console.log('createApolloClient')
   const hasuraIntegrationLink = createHttpLink({
     uri: `/api/hasura-integration`,
   });
@@ -133,7 +132,7 @@ export function initializeApollo(
   cache?: ApolloCache<NormalizedCacheObject>
 ): ApolloClient<NormalizedCacheObject> {
   const _apolloClient = apolloClient ?? createApolloClient(cache);
-  _apolloClient.clearStore()
+
   // For SSG and SSR always create a new Apollo Client
   if (typeof window === "undefined") return _apolloClient;
 
