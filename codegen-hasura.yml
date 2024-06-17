@@ -1,9 +1,8 @@
 overwrite: true
 schema:
-  - https://test-db-9f18.aks-japan.settlemint.com/v1/graphql:
+  - https://hasuradb-15ce.gke-japan.settlemint.com/sm_pat_6c885704eb42715f/v1/graphql:
       headers:
-        x-hasura-admin-secret: 7f6d66e9e3676914ba59
-        x-auth-token: bpaas-19faDE45dFE2ea995cCa257c764c669C580b2980
+        x-hasura-admin-secret: dc5eb1b93f43fd28c53e
 documents: ./**/*.hasura.graphql
 generates:
   libs/database/src/graphql.hasura.types.ts:
