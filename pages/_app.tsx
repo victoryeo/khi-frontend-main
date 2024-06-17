@@ -38,7 +38,7 @@ import { ContractProvider } from 'libs/blockchain/ethers';
 import { FileProvider } from 'libs/ui/src/lib/providers/fileProvider';
 import { LanguageProvider } from 'libs/ui/src/lib/providers/LanguageProvider';
 
-function CustomApp({
+export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) {
@@ -75,5 +75,3 @@ function CustomApp({
     </>
   );
 }
-
-export default CustomApp;
