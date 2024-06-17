@@ -14,7 +14,7 @@ const graphqlQuery = {
   variables: null,
   operationName: null,
 };
-const endpoint = 'https://test-db-9f18.aks-japan.settlemint.com/v1/graphql';
+const endpoint = `${process.env.HASURA_INTEGRATION_HOST}/v1/graphql`;
 
 const headers = {
   'x-hasura-admin-secret': `${process.env.HASURA_ADMIN_SECRET}`,
